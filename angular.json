@@ -29,7 +29,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/scss/argon.scss"
+              "src/assets/scss/argon.scss",
+              "node_modules/bootstrap/scss/bootstrap.scss"
             ],
             "scripts": []
           },

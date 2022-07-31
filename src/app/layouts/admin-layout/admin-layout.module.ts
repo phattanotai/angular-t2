@@ -8,16 +8,19 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-// import { ToastrModule } from 'ngx-toastr';
+// import { NewsComponent } from 'src/app/pages/news/news.component';
 
 @NgModule({
   imports: [
+    NgbModule,
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     HttpClientModule,
-    NgbModule,
   ],
-  declarations: [DashboardComponent],
+  declarations: [
+    DashboardComponent,
+    //  NewsComponent
+  ],
 })
 export class AdminLayoutModule {}

@@ -1,0 +1,33 @@
+.news {
+  h1 {
+    color: aqua;
+  }
+  .custom-select {
+    height: 30px !important;
+    font-size: 12px;
+  }
+
+  .page-item {
+    .page-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      margin: 0 3px;
+      border-radius: 50% !important;
+      width: 36px;
+      height: 36px;
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      margin: 0 3px;
+      border-radius: 0% !important;
+      width: 36px;
+      height: 36px;
+    }
+  }
+}
