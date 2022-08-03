@@ -1,8 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-
-
-
+.loading {
+  background-color: black;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  padding-left: 40%;
+  display: flex;
+  vertical-align: middle;
+}
+@import "../src//assets/scss/argon.scss";
 
 @tailwind base;
 @tailwind components;

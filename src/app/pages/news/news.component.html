@@ -1,137 +1,67 @@
 <div class="news row mt--7">
   <div class="col">
+    <h2 class="title mb-10 text-white">ข่าวประชาสัมพันธ์</h2>
     <div class="card shadow">
       <div class="card-header border-0">
-        <h3 class="mb-0">News tables</h3>
+        <div class="d-flex justify-content-between">
+          <h2 class="title mb-0">รายการข่าวประชาสัมพันธ์</h2>
+          <button class="btn btn-sm btn-lg btn-success" (click)="createNews()">
+            <i class="fas fa-plus-circle"></i>สร้างข่าว
+          </button>
+        </div>
       </div>
       <div class="table-responsive">
         <table class="table align-items-center table-flush">
           <thead class="thead-light">
             <tr>
-              <th scope="col">Project</th>
-              <th scope="col">Budget</th>
-              <th scope="col">Status</th>
-              <th scope="col">Users</th>
-              <th scope="col">Completion</th>
-              <th scope="col"></th>
+              <th
+                scope="col"
+                style="width: 12%"
+                class="text-right bg-indigo-400"
+              >
+                ลำดับ
+              </th>
+              <th class="bg-indigo-400" scope="col">ชื่อเรื่อง</th>
+              <th class="bg-indigo-400" scope="col">วันที่สร้าง</th>
+              <th class="bg-indigo-400" scope="col">จัดการ</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let item of paginateData; let i = index">
-              <th scope="row">
+              <th scope="row" class="text-right">
                 <div class="media align-items-center">
-                  <a
-                    href="javascript:void(0)"
-                    class="avatar rounded-circle mr-3"
-                  >
-                    <img
-                      alt="Image placeholder"
-                      src="../assets/img/theme/bootstrap.jpg"
+                  <span class="clearfix"></span>
+                  <label class="custom-toggle">
+                    <input
+                      type="checkbox"
+                      [checked]="item.Status === 1 ? true : false"
+                      (change)="changeStatus(item)"
                     />
-                  </a>
+                    <span class="custom-toggle-slider"></span>
+                  </label>
                   <div class="media-body">
-                    <span class="mb-0 text-sm">{{ item.name }}</span>
+                    <span class="mb-0 text-sm">{{ item.index }}</span>
                   </div>
                 </div>
               </th>
-              <td>$2,500 USD</td>
+              <td class="text-left">{{ item.Detail }}</td>
+              <td><i class="bg-warning"></i> {{ item.UpdatedDate }}</td>
               <td>
-                <span class="badge badge-dot mr-4">
-                  <i class="bg-warning"></i> pending
-                </span>
-              </td>
-              <td>
-                <div class="avatar-group">
-                  <a
-                    href="javascript:void(0)"
-                    class="avatar avatar-sm"
-                    data-toggle="tooltip"
-                    data-original-title="Ryan Tompson"
-                  >
-                    <img
-                      alt="Image placeholder"
-                      src="../assets/img/theme/team-1-800x800.jpg"
-                      class="rounded-circle"
-                    />
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    class="avatar avatar-sm"
-                    data-toggle="tooltip"
-                    data-original-title="Romina Hadid"
-                  >
-                    <img
-                      alt="Image placeholder"
-                      src="../assets/img/theme/team-2-800x800.jpg"
-                      class="rounded-circle"
-                    />
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    class="avatar avatar-sm"
-                    data-toggle="tooltip"
-                    data-original-title="Alexander Smith"
-                  >
-                    <img
-                      alt="Image placeholder"
-                      src="../assets/img/theme/team-3-800x800.jpg"
-                      class="rounded-circle"
-                    />
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    class="avatar avatar-sm"
-                    data-toggle="tooltip"
-                    data-original-title="Jessica Doe"
-                  >
-                    <img
-                      alt="Image placeholder"
-                      src="../assets/img/theme/team-4-800x800.jpg"
-                      class="rounded-circle"
-                    />
-                  </a>
-                </div>
-              </td>
-              <td>
-                <div class="d-flex align-items-center">
-                  <span class="mr-2">60%</span>
-                  <div>
-                    <div class="progress">
-                      <div
-                        class="progress-bar bg-warning"
-                        role="progressbar"
-                        aria-valuenow="60"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                        style="width: 60%"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="text-right">
-                <div ngbDropdown placement="bottom-right">
-                  <a
-                    class="btn btn-sm btn-icon-only text-light"
-                    ngbDropdownToggle
-                  >
-                    <i class="fas fa-ellipsis-v"></i>
-                  </a>
-                  <div
-                    ngbDropdownMenu
-                    class="dropdown-menu-right dropdown-menu-arrow"
-                  >
-                    <a class="dropdown-item" href="javascript:void(0)"
-                      >Action</a
-                    >
-                    <a class="dropdown-item" href="javascript:void(0)"
-                      >Another action</a
-                    >
-                    <a class="dropdown-item" href="javascript:void(0)"
-                      >Something else here</a
-                    >
-                  </div>
-                </div>
+                <i
+                  *ngIf="item.ButtonView === 1"
+                  class="far fa-file-alt detail"
+                  (click)="viewData(item)"
+                ></i>
+                <i
+                  *ngIf="item.ButtonEdit === 1"
+                  class="far fa-edit edit"
+                  (click)="editData(item)"
+                ></i>
+                <i
+                  *ngIf="item.ButtonDelete === 1"
+                  class="far fa-trash-alt delete"
+                  (click)="deleteData(item)"
+                ></i>
               </td>
             </tr>
           </tbody>
@@ -142,6 +72,7 @@
           <select
             class="custom-select mr-2 w-auto h-0 form-select-sm"
             [(ngModel)]="pageSize"
+            name="pageSize"
             (ngModelChange)="getNewsData()"
           >
             <option value="5">5</option>
@@ -159,53 +90,89 @@
             <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
           </ngb-pagination>
         </div>
-
-        <button class="btn btn-lg btn-outline-primary" (click)="open(content)">
-          Launch demo modal
-        </button>
       </div>
     </div>
   </div>
 </div>
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-    <button
-      type="button"
-      class="btn-close"
-      aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    ></button>
+    <h4 class="modal-title text-white">{{ title }}</h4>
   </div>
   <div class="modal-body">
-    <form>
-      <div class="mb-3">
-        <label for="dateOfBirth">Date of birth</label>
-        <div class="input-group">
-          <input
-            id="dateOfBirth"
-            class="form-control"
-            placeholder="yyyy-mm-dd"
-            name="dp"
-            ngbDatepicker
-            #dp="ngbDatepicker"
-          />
-          <button
-            class="btn btn-outline-secondary calendar"
-            (click)="dp.toggle()"
-            type="button"
-          ></button>
+    <form role="form">
+      <div class="form-group">
+        <div class="input-group mb-3 row">
+          <div class="col-3">
+            <label for="">ชื่อเรื่อง <span class="text-red-500">*</span></label>
+          </div>
+          <div class="col-9">
+            <input
+              [(ngModel)]="modalData.NameNews"
+              name="modalDataNameNews"
+              class="form-control"
+              placeholder="Name"
+              type="text"
+              [disabled]="modalDataState === 1 ? true : false"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group mb-3 row">
+          <div class="col-3">
+            <label for="">เนื้อหา <span class="text-red-500">*</span></label>
+          </div>
+          <div class="col-9">
+            <textarea
+              [(ngModel)]="modalData.Detail"
+              name="modalDataDetail"
+              class="form-control"
+              rows="3"
+              placeholder="Detail"
+              [disabled]="modalDataState === 1 ? true : false"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group row">
+          <div class="col-3">
+            <label for="">สถานะ </label>
+          </div>
+          <div class="col-9">
+            <span class="clearfix"></span>
+            <label class="custom-toggle">
+              <input
+                (change)="changeStatusModal()"
+                name="modalDataStatus"
+                type="checkbox"
+                [checked]="modalData.Status === 1 ? true : false"
+                [disabled]="modalDataState === 1 ? true : false"
+              />
+              <span class="custom-toggle-slider"></span>
+            </label>
+          </div>
         </div>
       </div>
     </form>
   </div>
-  <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-outline-dark"
-      (click)="modal.close('Save click')"
-    >
-      Save
-    </button>
+  <div class="modal-footer justify-content-center">
+    <div>
+      <button
+        *ngIf="modalDataState >= 0"
+        class="btn btn-sm btn-primary"
+        (click)="modal.close('Save click')"
+      >
+        ปิด
+      </button>
+
+      <!-- <button
+        *ngIf="modalDataState === 0 || modalDataState === 2"
+        class="btn btn-sm btn-primary"
+        (click)="saveData()"
+      >
+        บันทึก
+      </button> -->
+    </div>
   </div>
 </ng-template>
