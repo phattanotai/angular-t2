@@ -15,6 +15,6 @@ export class AdminLayoutComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.loading = false;
-    }, 500);
+    }, 3500);
   }
 }
