@@ -17,7 +17,7 @@
         "build": {
           "builder": "@ngx-env/builder:browser",
           "options": {
-            "outputPath": "dist/t2",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
