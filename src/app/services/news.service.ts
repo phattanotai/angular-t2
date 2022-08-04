@@ -43,11 +43,7 @@ export class NewsService {
     body.append('Status', data.Status);
 
     return this.http
-      .post(
-        `http://dev-sw6-uapi.ecm.in.th/uapi/drt-ElectronicsDocument/ED-UpdateStatusNews`,
-        body,
-        options
-      )
+      .post(`${environment.apiUrl}/ED-UpdateStatusNews`, body, options)
       .pipe(map((res: any) => res));
   }
 }
