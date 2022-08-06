@@ -1,6 +1,6 @@
 <div class="news row">
   <div class="col">
-    <h2 class="title mb-10 text-white">ข่าวประชาสัมพันธ์</h2>
+    <h2 class="mb-10 text-white">ข่าวประชาสัมพันธ์</h2>
     <div class="card shadow">
       <div class="card-header border-0">
         <div class="d-flex justify-content-between">
@@ -16,7 +16,7 @@
             <tr>
               <th
                 scope="col"
-                style="width: 12%"
+                style="width: 13%"
                 class="text-right bg-indigo-400"
               >
                 ลำดับ
@@ -29,8 +29,7 @@
           <tbody>
             <tr *ngFor="let item of paginateData; let i = index">
               <th scope="row" class="text-right">
-                <div class="media align-items-center">
-                  <span class="clearfix"></span>
+                <div class="media">
                   <label class="custom-toggle">
                     <input
                       type="checkbox"
@@ -40,7 +39,7 @@
                     <span class="custom-toggle-slider"></span>
                   </label>
                   <div class="media-body">
-                    <span class="mb-0 text-sm">{{ item.index }}</span>
+                    <span class="ml-[15px] text-sm">{{ item.index }}</span>
                   </div>
                 </div>
               </th>
@@ -86,6 +85,7 @@
             [pageSize]="pageSize"
             (pageChange)="getNewsData()"
             [maxSize]="3"
+            class="news-pagination"
           >
             <ng-template ngbPaginationNumber let-page>{{ page }}</ng-template>
           </ngb-pagination>

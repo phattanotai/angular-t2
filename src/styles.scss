@@ -1,14 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
 .loading {
-  background-color: black;
   text-align: center;
-  align-items: center;
   align-content: center;
-  padding-left: 40%;
-  display: flex;
   vertical-align: middle;
+  background-color: #0d0d0e;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
+
+.news-pagination {
+  .page-item {
+    .page-link,
+    span {
+      margin: 0px;
+      border-radius: 0% !important;
+    }
+  }
+}
+
 @import "../src//assets/scss/argon.scss";
 
 @tailwind base;
