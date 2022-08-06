@@ -7,10 +7,10 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class NewsService {
-  token: string = '';
+  private token: string = '';
   constructor(private http: HttpClient) {}
 
-  setHeader() {
+  private setHeader() {
     this.token = JSON.parse(localStorage.getItem('accessToken') || '{}');
     let Headers = new HttpHeaders();
     Headers = Headers.set('Content-Type', 'application/json; charset=UTF-8');
@@ -21,6 +21,7 @@ export class NewsService {
     const options = { headers: Headers, params: Params };
     return options;
   }
+
   getNews(EmployeeId: number) {
     const options = this.setHeader();
     options.params = options.params.set('EmployeeId', EmployeeId);

@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NewsService } from '../../services/news.service';
 import { NewsComponent } from './news.component';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 describe('NewsComponent', () => {
   let component: NewsComponent;
@@ -8,9 +13,9 @@ describe('NewsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewsComponent ]
-    })
-    .compileComponents();
+      imports: [HttpClientTestingModule, NgbModule],
+      declarations: [NewsComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NewsComponent);
     component = fixture.componentInstance;

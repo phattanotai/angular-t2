@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { AdminLayoutComponent } from './admin-layout.component';
 
 describe('AdminLayoutComponent', () => {
@@ -8,9 +8,9 @@ describe('AdminLayoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminLayoutComponent ]
-    })
-    .compileComponents();
+      imports: [RouterTestingModule.withRoutes([])],
+      declarations: [AdminLayoutComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
