@@ -6,7 +6,7 @@
 # Node artifact files
 node_modules/
 dist/
-data_mysql/
+mysql_data/
 .env
 
 # Log files

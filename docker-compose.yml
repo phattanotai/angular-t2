@@ -1,4 +1,4 @@
-version: '2'
+version: '3.8'
 
 services:
     sonar:
@@ -9,6 +9,23 @@ services:
             - SONARQUBE_JDBC_URL=jdbc:mysql://mysql_container:3306/sonar?useUnicode=true&characterEncoding=utf8
             - SONARQUBE_JDBC_USERNAME=admin
             - SONARQUBE_JDBC_PASSWORD=1234
+        depends_on:
+            - sonardb
+    sonardb:
+        image: mysql:5.7
+        container_name: mysql_container
+        volumes:
+            - ./mysql_data:/var/lib/mysql
+            - ./init.sql:/data/application/init.sql
+        restart: always
+        ports: 
+            - 3306:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
 networks:
   default:
     external:
