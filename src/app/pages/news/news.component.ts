@@ -98,7 +98,7 @@ export class NewsComponent implements OnInit {
 
   createNews() {
     this.modalDataState = 0;
-    this.title = 'Create News';
+    this.title = 'สร้างข่าวประชาสัมพันธ์';
     this.modalData = {
       NewsId: 0,
       NameNews: '',
@@ -114,7 +114,7 @@ export class NewsComponent implements OnInit {
 
   editData(data: object) {
     this.modalDataState = 2;
-    this.title = 'Edit News';
+    this.title = 'แก้ไขข่าวประชาสัมพันธ์';
     this.modalData = data;
     console.log(this.modalData);
     this.open(this.content);
@@ -122,7 +122,7 @@ export class NewsComponent implements OnInit {
 
   viewData(data: object) {
     this.modalDataState = 1;
-    this.title = 'News Detail';
+    this.title = 'รายละเอียดข่าวประชาสัมพันธ์';
     this.modalData = data;
     this.open(this.content);
   }
